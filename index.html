@@ -224,6 +224,7 @@
     .hero-grid {
       display: grid;
       gap: 2rem;
+      max-width: 72rem;
     }
 
     .eyebrow {
@@ -254,10 +255,10 @@
     }
 
     .hero-title {
-      max-width: 11ch;
+      max-width: 12ch;
       font-family: "Space Mono", monospace;
-      font-size: clamp(3rem, 10vw, 7rem);
-      letter-spacing: -0.06em;
+      font-size: clamp(2.4rem, 7vw, 5.2rem);
+      letter-spacing: -0.05em;
       margin-bottom: 1rem;
       text-wrap: balance;
     }
@@ -270,9 +271,9 @@
     .hero-subtitle {
       min-height: 1.7em;
       font-family: "Space Mono", monospace;
-      font-size: clamp(1rem, 2.7vw, 1.35rem);
+      font-size: clamp(0.98rem, 2.1vw, 1.15rem);
       color: var(--text);
-      margin-bottom: 1.25rem;
+      margin-bottom: 1.1rem;
     }
 
     .hero-subtitle::after {
@@ -287,9 +288,9 @@
     }
 
     .hero-copy {
-      max-width: 60ch;
+      max-width: 58ch;
       color: var(--muted);
-      font-size: 1.03rem;
+      font-size: 0.98rem;
     }
 
     .hero-actions {
@@ -359,55 +360,6 @@
       border-radius: 999px;
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid rgba(255, 255, 255, 0.06);
-    }
-
-    .ascii-panel {
-      position: relative;
-      padding: 1.35rem;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: var(--radius);
-      background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.015)),
-        rgba(255, 255, 255, 0.02);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-    }
-
-    .ascii-panel::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(135deg, rgba(0, 229, 255, 0.08), transparent 45%),
-        radial-gradient(circle at bottom left, rgba(0, 229, 255, 0.08), transparent 40%);
-      pointer-events: none;
-    }
-
-    .ascii-panel::after {
-      content: "init.backend()  clean_architecture => true  async_pipeline => true";
-      position: absolute;
-      left: 1.35rem;
-      right: 1.35rem;
-      bottom: 1rem;
-      color: rgba(255, 255, 255, 0.16);
-      font-family: "Space Mono", monospace;
-      font-size: 0.72rem;
-      letter-spacing: 0.06em;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .ascii-art {
-      margin: 0;
-      min-height: 100%;
-      font-family: "Space Mono", monospace;
-      font-size: clamp(0.48rem, 1.65vw, 0.87rem);
-      line-height: 1.42;
-      color: rgba(241, 241, 235, 0.9);
-      white-space: pre;
-      position: relative;
-      z-index: 1;
     }
 
     .section-heading {
@@ -729,7 +681,6 @@
     }
 
     @media (min-width: 760px) {
-      .hero-grid,
       .about-grid {
         grid-template-columns: minmax(0, 1.18fr) minmax(300px, 0.82fr);
         align-items: start;
@@ -853,33 +804,6 @@
             </div>
           </div>
 
-          <aside class="ascii-panel reveal" aria-label="Decorative code art panel">
-<pre class="ascii-art">
-&lt;system boot="backend"&gt;
-  route-map {
-    auth      -> stable
-    posts     -> paginated
-    comments  -> threaded
-    workers   -> async
-  }
-
-  patterns [
-    "Repository",
-    "UnitOfWork",
-    "SOLID",
-    "CleanArch"
-  ]
-
-  query-plan:
-    SELECT focus
-    FROM engineer
-    WHERE name = "Ahmed";
-
-  result =&gt; "design APIs that stay fast,
-             readable, and maintainable"
-&lt;/system&gt;
-</pre>
-          </aside>
         </div>
       </section>
 
