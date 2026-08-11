@@ -18,18 +18,27 @@
     rel="stylesheet">
   <style>
     :root {
-      /* OKLCH Color Palette - Industrial Control Panel */
-      --bg: oklch(0.12 0 0);          /* Matte dark graphite */
-      --surface: oklch(0.18 0 0);     /* Elevated graphite for panels */
-      --surface-border: oklch(0.28 0 0); /* Crisp structural borders */
-      --ink: oklch(0.95 0 0);         /* High contrast white */
-      --primary: oklch(0.665 0.222 25.7); /* Crimson red seed */
-      --primary-hover: oklch(0.55 0.222 25.7);
-      --accent: oklch(0.75 0.15 65);  /* Warm amber for warnings/highlights */
-      --muted: oklch(0.65 0 0);       /* Mid-grey for metadata */
+      /* OKLCH Color Palette - 2. Cyber-Brutalism */
+      --bg: oklch(0.05 0 0);                 /* Pure void black */
+      --surface: oklch(0.12 0 0);            /* Deep black panel */
+      --surface-border: oklch(0.25 0 0);     /* Stark grey borders */
+      --ink: oklch(0.98 0 0);                /* Pure stark white */
+      --primary: oklch(0.65 0.25 25);        /* Warning Red */
+      --primary-hover: oklch(0.75 0.25 25);
+      --primary-wash: oklch(0.15 0.05 25);   /* Red tint for backgrounds */
+      --accent: oklch(0.98 0 0);             /* Pure white accent */
+      --muted: oklch(0.60 0 0);              /* Neutral mid-grey */
 
       --font-sans: "Archivo", sans-serif;
       --font-mono: "JetBrains Mono", monospace;
+      
+      /* Typography System */
+      --text-caption: 0.875rem;
+      --text-body: 1rem;
+      --text-lead: 1.125rem;
+      --text-heading: clamp(1.5rem, 3vw, 2rem);
+      --text-display: clamp(2rem, 5vw, 3.5rem);
+      --text-hero: clamp(3rem, 8vw, 6rem);
       
       --space-1: 0.25rem;
       --space-2: 0.5rem;
@@ -64,10 +73,17 @@
       margin: 0;
       min-height: 100vh;
       font-family: var(--font-sans);
-      line-height: 1.6;
+      font-size: var(--text-body);
+      line-height: 1.65;
       color: var(--ink);
       background: var(--bg);
       -webkit-font-smoothing: antialiased;
+    }
+
+    p {
+      max-width: 65ch;
+      margin-top: 0;
+      margin-bottom: 1em;
     }
 
     a {
@@ -95,8 +111,9 @@
     h1, h2, h3, h4 {
       margin: 0;
       font-weight: 700;
-      letter-spacing: -0.01em;
+      letter-spacing: -0.02em;
       text-wrap: balance;
+      line-height: 1.2;
     }
 
     .mono {
@@ -125,7 +142,7 @@
 
     .brand {
       font-family: var(--font-mono);
-      font-size: 0.9rem;
+      font-size: var(--text-caption);
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.05em;
@@ -142,9 +159,10 @@
       margin: 0;
       padding: 0;
       font-family: var(--font-sans);
-      font-size: 0.85rem;
+      font-size: var(--text-caption);
       text-transform: uppercase;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.08em;
+      font-weight: 500;
     }
 
     .nav-link {
@@ -163,9 +181,10 @@
 
     .section-label {
       font-family: var(--font-sans);
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
+      font-size: var(--text-caption);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
       color: var(--primary);
       margin-bottom: var(--space-4);
       display: flex;
@@ -181,9 +200,10 @@
     }
 
     .section-title {
-      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-size: var(--text-display);
       text-transform: uppercase;
-      line-height: 1.1;
+      letter-spacing: 0.02em;
+      line-height: 1.05;
       margin-bottom: var(--space-10);
     }
 
@@ -233,15 +253,16 @@
     }
 
     .hero-title {
-      font-size: clamp(3rem, 8vw, 6rem);
-      line-height: 1;
+      font-size: var(--text-hero);
+      line-height: 0.95;
       text-transform: uppercase;
+      letter-spacing: 0.02em;
       margin-bottom: var(--space-4);
     }
 
     .hero-tagline {
       font-family: var(--font-mono);
-      font-size: 1.1rem;
+      font-size: var(--text-lead);
       color: var(--primary);
       margin-bottom: var(--space-6);
       min-height: 1.5em;
@@ -255,9 +276,10 @@
     }
 
     .hero-bio {
-      font-size: 1.1rem;
+      font-size: var(--text-lead);
+      line-height: 1.6;
       color: var(--muted);
-      max-width: 45ch;
+      max-width: 50ch;
       margin-bottom: var(--space-8);
     }
 
@@ -271,7 +293,7 @@
 
     .badge {
       font-family: var(--font-mono);
-      font-size: 0.8rem;
+      font-size: var(--text-caption);
       padding: 0.25rem 0.75rem;
       border: 1px solid var(--surface-border);
       background: var(--surface);
@@ -291,7 +313,8 @@
       justify-content: center;
       padding: 0.75rem 1.5rem;
       font-family: var(--font-mono);
-      font-size: 0.9rem;
+      font-size: var(--text-caption);
+      letter-spacing: 0.06em;
       text-transform: uppercase;
       border: 1px solid var(--surface-border);
       background: transparent;
@@ -307,14 +330,14 @@
     .button-primary {
       background: var(--primary);
       border-color: var(--primary);
-      color: var(--bg);
+      color: var(--ink);
       font-weight: 700;
     }
 
     .button-primary:hover {
       background: var(--primary-hover);
       border-color: var(--primary-hover);
-      color: var(--bg);
+      color: var(--ink);
     }
 
     /* Hero Portrait */
@@ -358,13 +381,14 @@
 
     /* Projects */
     .project-title {
-      font-size: 1.5rem;
+      font-size: var(--text-heading);
+      letter-spacing: -0.01em;
       margin-bottom: var(--space-2);
     }
 
     .project-date {
       font-family: var(--font-mono);
-      font-size: 0.85rem;
+      font-size: var(--text-caption);
       color: var(--muted);
       margin-bottom: var(--space-4);
     }
@@ -383,12 +407,12 @@
     }
 
     .tech-badge {
-      font-size: 0.75rem;
+      font-size: var(--text-caption);
       font-family: var(--font-mono);
       padding: 0.15rem 0.5rem;
-      background: var(--bg);
+      background: var(--primary-wash);
       border: 1px solid var(--surface-border);
-      color: oklch(0.80 0 0);
+      color: var(--primary);
     }
 
     /* Skills */
@@ -402,9 +426,9 @@
 
     .skill-label {
       font-family: var(--font-sans);
-      font-weight: 600;
-      font-size: 0.8rem;
-      letter-spacing: 0.06em;
+      font-weight: 700;
+      font-size: var(--text-caption);
+      letter-spacing: 0.08em;
       color: var(--primary);
       margin-bottom: var(--space-2);
       text-transform: uppercase;
@@ -415,7 +439,7 @@
       padding: var(--space-10) 0;
       border-top: 1px solid var(--surface-border);
       font-family: var(--font-mono);
-      font-size: 0.85rem;
+      font-size: var(--text-caption);
       color: var(--muted);
     }
 
@@ -501,7 +525,7 @@
           <h1 class="hero-title">Ahmed Arafa</h1>
           <p class="hero-tagline"><span class="typing-line" id="typing-text"></span></p>
           <p class="hero-bio">
-            Backend Developer with a B.Sc. in Computer Science (GPA 3.23) and hands-on experience building scalable web applications using C#, ASP.NET Core, and REST APIs. Driven to tackle complex backend challenges and continuously improve system performance and architecture.
+            Backend Engineer with a B.Sc. in Computer Science and hands-on experience building and deploying web applications with C#, ASP.NET Core, TypeScript, PostgreSQL, and REST APIs — session authorization, file storage, scheduled cleanup jobs, and layered architecture.
           </p>
           <div class="badge-row">
             <span class="badge">Cairo, EG</span>
@@ -527,25 +551,31 @@
         <h2 class="section-title">About Me</h2>
         <div class="grid-2 grid-about">
           <div class="panel">
-            <p>Backend Developer with a Bachelor's in Computer Science (GPA 3.23) and hands-on experience building scalable web applications using C#, ASP.NET Core, and REST APIs.</p>
-            <p>Developed a full-featured social media application demonstrating strong skills in database design, API development, and SOLID principles. Proficient in Python and problem-solving, with a focus on writing clean, maintainable, and production-ready code aligned with industry best practices.</p>
+            <p>I build backend systems that solve real problems — not just code that works, but systems that scale.</p>
+            <p>I'm a Computer Science graduate focused on backend engineering. I built a full social media platform from scratch using ASP.NET Core MVC — designing the database, structuring the REST APIs, and applying SOLID principles throughout. That project didn't just teach me the stack. It taught me how to think like a backend engineer: structured, maintainable, and production-oriented.</p>
+            <p>Strong foundation in C#, Python, RESTful API design, and relational databases. I write clean, efficient code and hold myself to real-world engineering standards — not just academic ones. Currently expanding into distributed systems, Docker, and AI infrastructure.</p>
+            <p>A Junior Backend Engineer role where I can build scalable APIs and backend services on a team that takes engineering craft seriously — and where there's meaningful depth to grow into.</p>
           </div>
           <div class="panel">
             <div class="skill-category">
               <div class="skill-label">Languages</div>
-              <div>C#, Python</div>
+              <div>C#, TypeScript, Python, SQL</div>
             </div>
             <div class="skill-category">
-              <div class="skill-label">Frameworks</div>
-              <div>ASP.NET Core, .NET Core, Django, Django REST Framework (DRF)</div>
+              <div class="skill-label">Frameworks &amp; Runtimes</div>
+              <div>ASP.NET Core, .NET Core, Django, Django REST Framework, Vue 3, Deno</div>
             </div>
             <div class="skill-category">
-              <div class="skill-label">Databases &amp; Tools</div>
-              <div>SQL Server, Docker, Git, EF Core, LINQ</div>
+              <div class="skill-label">Databases &amp; Storage</div>
+              <div>PostgreSQL, SQL Server, Supabase Storage</div>
+            </div>
+            <div class="skill-category">
+              <div class="skill-label">Tools</div>
+              <div>Docker, Git, Supabase, EF Core, LINQ, Vite</div>
             </div>
             <div class="skill-category">
               <div class="skill-label">Concepts</div>
-              <div>REST APIs, OOP, SOLID, Data Structures &amp; Algorithms, Clean Architecture</div>
+              <div>REST APIs, Authentication, Background Jobs, OOP, SOLID, Clean Architecture, Repository Pattern, Unit of Work</div>
             </div>
           </div>
         </div>
@@ -558,7 +588,31 @@
         <div class="section-label">▸ DEPLOYMENTS</div>
         <h2 class="section-title">Projects</h2>
         <div class="grid-2">
-          
+
+          <div class="panel">
+            <h3 class="project-title">Easy Copy</h3>
+            <div class="project-date">Aug 2026</div>
+            <p class="project-desc">Temporary cross-device file and note transfer platform with password-protected sessions.</p>
+            <ul class="text-muted">
+              <li>Designed and deployed a temporary cross-device transfer platform with password-protected sessions and configurable 15, 30, or 60-minute lifetimes.</li>
+              <li>Implemented account-free session authorization using bcrypt-hashed passwords and server-side validation across Deno Edge Functions.</li>
+              <li>Built session-scoped file and note workflows using PostgreSQL and Supabase Storage, including signed file transfers, upload progress, and resource limits.</li>
+              <li>Enforced session expiry with a scheduled cleanup job running every 30 minutes to remove expired files, notes, and session records.</li>
+              <li>Tested the complete lifecycle across devices, from session creation and authorization through file transfer, expiration, and data cleanup.</li>
+            </ul>
+            <div class="tech-badges">
+              <span class="tech-badge">Vue 3</span>
+              <span class="tech-badge">TypeScript</span>
+              <span class="tech-badge">Vite</span>
+              <span class="tech-badge">PostgreSQL</span>
+              <span class="tech-badge">Deno Edge Functions</span>
+            </div>
+            <div style="margin-top: 1.5rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+              <a href="https://easy-copy.pages.dev/" class="button" target="_blank" rel="noopener noreferrer">Live App</a>
+              <a href="https://github.com/ahmed151515/easy_copy" class="button" target="_blank" rel="noopener noreferrer">View Repo</a>
+            </div>
+          </div>
+
           <div class="panel">
             <h3 class="project-title">Social Media App</h3>
             <div class="project-date">Oct 2025</div>
@@ -574,6 +628,7 @@
               <span class="tech-badge">C#</span>
               <span class="tech-badge">SQL Server</span>
               <span class="tech-badge">EF Core</span>
+              <span class="tech-badge">LINQ</span>
             </div>
             <div style="margin-top: 1.5rem;">
               <a href="https://github.com/ahmed151515/Social_Media_App" class="button" target="_blank">View Repo</a>
@@ -654,7 +709,7 @@
           <p style="font-size: 1.1rem; max-width: 60ch; margin-bottom: 2rem;">If you need a backend engineer who thinks about architecture, performance, and maintainability — I'm available. Let's build something solid.</p>
           <div class="cta-row">
             <a class="button button-primary" href="mailto:ahmed.arafa.engineer15@gmail.com">Email Me</a>
-            <a class="button" href="tel:+201153350972">📞 +20 115 335 0972</a>
+            <a class="button" href="tel:+201153350972">+20 115 335 0972</a>
             <a class="button" href="https://github.com/ahmed151515" target="_blank">GitHub</a>
             <a class="button" href="https://www.linkedin.com/in/ahmedarafa1515/" target="_blank">LinkedIn</a>
           </div>
@@ -672,6 +727,7 @@
   <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
   <script>
     (() => {
       const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -694,10 +750,153 @@
       const isMobile = window.innerWidth < 768;
 
       if (!prefersReducedMotion && !isMobile) {
-        // Background Canvas — Animated Grid with scroll-fade and card hover burst
         const canvas = document.getElementById("bg-canvas");
-        const ctx = canvas.getContext("2d");
-        let width, height;
+        let useWebGL = false;
+        try {
+          const testCanvas = document.createElement('canvas');
+          useWebGL = !!(window.WebGLRenderingContext && (testCanvas.getContext('webgl') || testCanvas.getContext('experimental-webgl')));
+        } catch(e) {}
+
+        if (useWebGL && typeof THREE !== 'undefined') {
+          // --- WebGL Overdrive Background ---
+          const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+          renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+          let width = window.innerWidth;
+          let height = window.innerHeight;
+          renderer.setSize(width, height);
+
+          const scene = new THREE.Scene();
+          const camera = new THREE.PerspectiveCamera(60, width / height, 1, 2000);
+          camera.position.z = 800;
+
+          const particleCount = 250;
+          const particlesGeometry = new THREE.BufferGeometry();
+          const particlePositions = new Float32Array(particleCount * 3);
+          const particleVelocities = [];
+
+          for (let i = 0; i < particleCount; i++) {
+            particlePositions[i * 3] = (Math.random() - 0.5) * 2000;
+            particlePositions[i * 3 + 1] = (Math.random() - 0.5) * 2000;
+            particlePositions[i * 3 + 2] = (Math.random() - 0.5) * 1000;
+            particleVelocities.push({
+              x: (Math.random() - 0.5) * 0.5,
+              y: (Math.random() - 0.5) * 0.5,
+              z: (Math.random() - 0.5) * 0.5
+            });
+          }
+          particlesGeometry.setAttribute('position', new THREE.BufferAttribute(particlePositions, 3));
+          
+          const pMaterial = new THREE.PointsMaterial({
+            color: 0xff003c, // Warning Red
+            size: 4,
+            transparent: true,
+            opacity: 0.8,
+            sizeAttenuation: true
+          });
+
+          const particles = new THREE.Points(particlesGeometry, pMaterial);
+          scene.add(particles);
+
+          const linesMaterial = new THREE.LineBasicMaterial({
+            color: 0x333333, // Pure dark grey lines
+            transparent: true,
+            opacity: 0.4
+          });
+          const linesMesh = new THREE.LineSegments(new THREE.BufferGeometry(), linesMaterial);
+          scene.add(linesMesh);
+
+          const mouse = new THREE.Vector2(-9999, -9999);
+          const targetMouse = new THREE.Vector2(-9999, -9999);
+          
+          window.addEventListener('mousemove', (e) => {
+            targetMouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+            targetMouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+          }, { passive: true });
+
+          window.addEventListener("scroll", () => {
+            const heroHeight = window.innerHeight;
+            const scrollY = window.scrollY;
+            const fadeStart = heroHeight * 0.4;
+            const fadeEnd = heroHeight * 0.9;
+            let opacity = scrollY < fadeStart ? 1 : scrollY > fadeEnd ? 0.18 : 1 - ((scrollY - fadeStart) / (fadeEnd - fadeStart)) * 0.82;
+            canvas.style.opacity = opacity;
+            camera.position.y = -(scrollY * 0.4);
+          }, { passive: true });
+
+          window.addEventListener("resize", () => {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            camera.aspect = width / height;
+            camera.updateProjectionMatrix();
+            renderer.setSize(width, height);
+          });
+
+          const raycaster = new THREE.Raycaster();
+          const plane = new THREE.Plane(new THREE.Vector3(0, 0, 1), 0);
+          
+          function animate() {
+            requestAnimationFrame(animate);
+
+            mouse.x += (targetMouse.x - mouse.x) * 0.1;
+            mouse.y += (targetMouse.y - mouse.y) * 0.1;
+
+            raycaster.setFromCamera(mouse, camera);
+            const mouse3D = new THREE.Vector3();
+            raycaster.ray.intersectPlane(plane, mouse3D);
+
+            const positions = particlesGeometry.attributes.position.array;
+            let linePositions = [];
+
+            for (let i = 0; i < particleCount; i++) {
+              let px = positions[i * 3];
+              let py = positions[i * 3 + 1];
+              let pz = positions[i * 3 + 2];
+              
+              px += particleVelocities[i].x;
+              py += particleVelocities[i].y;
+              pz += particleVelocities[i].z;
+
+              if (px > 1000) px = -1000; else if (px < -1000) px = 1000;
+              if (py > 1000) py = -1000; else if (py < -1000) py = 1000;
+              if (pz > 500) pz = -500; else if (pz < -500) pz = 500;
+
+              const dx = px - mouse3D.x;
+              const dy = py - mouse3D.y;
+              const dist = Math.sqrt(dx*dx + dy*dy);
+              if (dist < 250) {
+                const force = (250 - dist) / 250;
+                px += dx / dist * force * 8;
+                py += dy / dist * force * 8;
+              }
+
+              positions[i * 3] = px;
+              positions[i * 3 + 1] = py;
+              positions[i * 3 + 2] = pz;
+
+              for (let j = i + 1; j < particleCount; j++) {
+                const px2 = positions[j * 3];
+                const py2 = positions[j * 3 + 1];
+                const pz2 = positions[j * 3 + 2];
+                const d = Math.sqrt(Math.pow(px-px2,2) + Math.pow(py-py2,2) + Math.pow(pz-pz2,2));
+                if (d < 160) {
+                  linePositions.push(px, py, pz, px2, py2, pz2);
+                }
+              }
+            }
+            particlesGeometry.attributes.position.needsUpdate = true;
+            linesMesh.geometry.dispose();
+            linesMesh.geometry = new THREE.BufferGeometry().setAttribute('position', new THREE.Float32BufferAttribute(linePositions, 3));
+            
+            scene.rotation.y += 0.001;
+            scene.rotation.x += 0.0005;
+
+            renderer.render(scene, camera);
+          }
+          animate();
+        } else {
+          // --- Fallback 2D Canvas ---
+          const ctx = canvas.getContext("2d");
+          let width, height;
         const squareSize = 60;
         let horizontalBeams = [];
         let verticalBeams = [];
@@ -759,7 +958,7 @@
 
           // 1. Static faint grid
           ctx.beginPath();
-          ctx.strokeStyle = "rgba(242, 245, 247, 0.04)";
+          ctx.strokeStyle = "rgba(255, 0, 60, 0.05)";
           ctx.lineWidth = 1;
           for (let x = 0; x <= width; x += squareSize) {
             ctx.moveTo(x, 0); ctx.lineTo(x, height);
@@ -786,7 +985,7 @@
                 const dist = Math.sqrt(Math.pow(sx + squareSize / 2 - cx, 2) + Math.pow(sy + squareSize / 2 - cy, 2));
                 const glowAlpha = Math.max(0, (1 - dist / maxDist) * 0.18);
                 if (glowAlpha > 0.005) {
-                  ctx.strokeStyle = `rgba(227, 64, 69, ${glowAlpha})`;
+                  ctx.strokeStyle = `rgba(255, 0, 60, ${glowAlpha})`;
                   ctx.lineWidth = 1;
                   ctx.strokeRect(sx, sy, squareSize, squareSize);
                 }
@@ -801,7 +1000,7 @@
             burst.alpha *= 0.92;
             ctx.beginPath();
             ctx.arc(burst.x, burst.y, burst.radius, 0, Math.PI * 2);
-            ctx.strokeStyle = `rgba(227, 64, 69, ${burst.alpha})`;
+            ctx.strokeStyle = `rgba(255, 0, 60, ${burst.alpha})`;
             ctx.lineWidth = 1;
             ctx.stroke();
           });
@@ -817,8 +1016,8 @@
             const headX = beam.speed > 0 ? beam.pos + beam.length : beam.pos;
             if (Math.abs(tailX - headX) < 1) return;
             const grad = ctx.createLinearGradient(tailX, y, headX, y);
-            grad.addColorStop(0, "rgba(227, 64, 69, 0)");
-            grad.addColorStop(1, "rgba(227, 64, 69, 0.75)");
+            grad.addColorStop(0, "rgba(255, 0, 60, 0)");
+            grad.addColorStop(1, "rgba(255, 0, 60, 0.75)");
             ctx.beginPath();
             ctx.strokeStyle = grad;
             ctx.moveTo(tailX, y);
@@ -835,8 +1034,8 @@
             const headY = beam.speed > 0 ? beam.pos + beam.length : beam.pos;
             if (Math.abs(tailY - headY) < 1) return;
             const grad = ctx.createLinearGradient(x, tailY, x, headY);
-            grad.addColorStop(0, "rgba(227, 64, 69, 0)");
-            grad.addColorStop(1, "rgba(227, 64, 69, 0.75)");
+            grad.addColorStop(0, "rgba(255, 0, 60, 0)");
+            grad.addColorStop(1, "rgba(255, 0, 60, 0.75)");
             ctx.beginPath();
             ctx.strokeStyle = grad;
             ctx.moveTo(x, tailY);
@@ -849,6 +1048,7 @@
 
         initCanvas();
         drawBg();
+        }
 
         // GSAP Animations
         gsap.registerPlugin(ScrollTrigger);
@@ -929,7 +1129,8 @@
       const typingPhrases = [
         "Initializing backend systems...",
         "Architecting clean APIs...",
-        "Optimizing database queries..."
+        "Scheduling background cleanup jobs...",
+        "Hashing session passwords..."
       ];
       let phraseIndex = 0;
       let charIndex = 0;

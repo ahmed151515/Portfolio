@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-06-26T14:57:40Z",
+  "title": "Design System: Sys.Ahmed",
+  "extensions": {
+    "colorMeta": {
+      "primary": { "role": "primary", "displayName": "Cyber Warning Red", "canonical": "oklch(0.65 0.25 25)", "tonalRamp": ["oklch(0.15 0.05 25)", "oklch(0.25 0.1 25)", "oklch(0.4 0.15 25)", "oklch(0.5 0.2 25)", "oklch(0.65 0.25 25)", "oklch(0.75 0.25 25)", "oklch(0.85 0.15 25)", "oklch(0.95 0.05 25)"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Primary section headers." }
+    },
+    "shadows": [],
+    "motion": [
+      { "name": "transition-standard", "value": "0.2s ease-out", "purpose": "Default easing for state transitions." }
+    ],
+    "breakpoints": [
+      { "name": "md", "value": "768px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Used for main CTAs.",
+      "html": "<button class=\"ds-btn-primary\">DOWNLOAD CV</button>",
+      "css": ".ds-btn-primary { background: oklch(0.65 0.25 25); color: oklch(0.98 0 0); border: 1px solid oklch(0.65 0.25 25); padding: 0.75rem 1.5rem; font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; border-radius: 2px; cursor: pointer; transition: 0.2s ease-out; } .ds-btn-primary:hover { background: oklch(0.75 0.25 25); border-color: oklch(0.75 0.25 25); }"
+    },
+    {
+      "name": "Default Button",
+      "kind": "button",
+      "refersTo": "button-default",
+      "description": "Used for secondary actions.",
+      "html": "<button class=\"ds-btn-default\">LET'S TALK</button>",
+      "css": ".ds-btn-default { background: transparent; color: oklch(0.98 0 0); border: 1px solid oklch(0.25 0 0); padding: 0.75rem 1.5rem; font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; letter-spacing: 0.06em; text-transform: uppercase; border-radius: 2px; cursor: pointer; transition: 0.2s ease-out; } .ds-btn-default:hover { background: oklch(0.12 0 0); }"
+    },
+    {
+      "name": "Tech Badge",
+      "kind": "chip",
+      "refersTo": "badge-tech",
+      "description": "Used to denote tools and technologies.",
+      "html": "<span class=\"ds-badge-tech\">ASP.NET Core</span>",
+      "css": ".ds-badge-tech { background: oklch(0.15 0.05 25); color: oklch(0.65 0.25 25); border: 1px solid oklch(0.25 0 0); padding: 0.15rem 0.5rem; font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; border-radius: 2px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Cyber-Engineer",
+    "overview": "This visual system evokes the precision, raw power, and absolute reliability of high-level backend engineering. It leans on a cyber-brutalist aesthetic—stark voids, monospace typography, and warning-red accents—to demonstrate technical expertise without generic templates or cartoonish distraction. The layout is disciplined, treating the screen as a terminal interface composed of high-precision structural units.\n\nWe explicitly reject cluttered layouts, generic Bootstrap/Tailwind aesthetics, and anything overly playful or un-structured.",
+    "keyCharacteristics": ["Expert Confidence: Unapologetic contrast and rigid grid structures.", "Show, Don't Tell: Sharp micro-interactions and precision alignments.", "Clarity Over Clutter: Absolute minimal distraction; if it's not data, it's black."],
+    "rules": [
+      { "name": "The One Voice Rule", "body": "The primary accent is used on ≤10% of any given screen. Its rarity is what gives it warning-level power.", "section": "colors" },
+      { "name": "The Terminal Rule", "body": "Monospace is strictly reserved for data (dates, code), interactive labels, and terminal-flavor accents. Never for body paragraphs.", "section": "typography" },
+      { "name": "The Void Rule", "body": "The Z-axis is flat. Depth is conveyed entirely through high-contrast borders separating deep panels from the void background. No box-shadows, ever.", "section": "elevation" }
+    ],
+    "dos": ["Do use strict monochromatic structures with stark borders to define space.", "Do employ monospace fonts for technical data, tags, and small utility text.", "Do keep animations sharp and purposeful (e.g. blink cursors, stark hover snaps)."],
+    "donts": ["Don't use generic Bootstrap/Tailwind templates or overly playful aesthetics.", "Don't clutter layouts; maintain empty void space for visual relief.", "Don't use drop shadows (box-shadow) or glassmorphism to show elevation.", "Don't use border-radius greater than 4px on any structural element."]
+  }
+}
