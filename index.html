@@ -5,10 +5,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
-    content="Ahmed Arafa is a backend engineer based in Cairo, Egypt, specializing in ASP.NET Core, clean architecture, and scalable API development.">
+    content="Ahmed Arafa is a Junior Backend Engineer specializing in C#, ASP.NET Core, REST APIs, relational database workflows, authentication, and background processing.">
   <title>Ahmed Arafa | Backend Engineer</title>
   <meta property="og:title" content="Ahmed Arafa | Backend Engineer">
-  <meta property="og:description" content="Backend engineer specializing in ASP.NET Core, clean architecture, and scalable APIs.">
+  <meta property="og:description"
+    content="Junior Backend Engineer specializing in C#, ASP.NET Core, relational database workflows, and scalable REST APIs.">
   <meta property="og:url" content="https://ahmed151515.github.io/Portfolio/">
   <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,7 +19,7 @@
     rel="stylesheet">
   <style>
     :root {
-      /* OKLCH Color Palette - 2. Cyber-Brutalism */
+      /* OKLCH Color Palette - Cyber-Brutalism */
       --bg: oklch(0.05 0 0);                 /* Pure void black */
       --surface: oklch(0.12 0 0);            /* Deep black panel */
       --surface-border: oklch(0.25 0 0);     /* Stark grey borders */
@@ -35,10 +36,10 @@
       /* Typography System */
       --text-caption: 0.875rem;
       --text-body: 1rem;
-      --text-lead: 1.125rem;
-      --text-heading: clamp(1.5rem, 3vw, 2rem);
-      --text-display: clamp(2rem, 5vw, 3.5rem);
-      --text-hero: clamp(3rem, 8vw, 6rem);
+      --text-lead: 1.25rem;
+      --text-heading: clamp(1.4rem, 2.5vw, 1.85rem);
+      --text-display: clamp(2rem, 4vw, 3.25rem);
+      --text-hero: clamp(2.75rem, 7vw, 5.5rem);
       
       --space-1: 0.25rem;
       --space-2: 0.5rem;
@@ -57,7 +58,7 @@
 
       --transition: 0.2s ease-out;
       --nav-height: 4rem;
-      --container: 1000px;
+      --container: 1040px;
     }
 
     * {
@@ -89,7 +90,7 @@
     a {
       color: inherit;
       text-decoration: none;
-      transition: color var(--transition);
+      transition: color var(--transition), border-color var(--transition), background-color var(--transition);
     }
 
     img {
@@ -114,6 +115,21 @@
       letter-spacing: -0.02em;
       text-wrap: balance;
       line-height: 1.2;
+    }
+
+    h1, .hero-title {
+      font-size: 3.75rem;
+      font-size: var(--text-hero);
+    }
+
+    h2, .section-title {
+      font-size: 2.5rem;
+      font-size: var(--text-display);
+    }
+
+    h3, .project-title {
+      font-size: 1.5rem;
+      font-size: var(--text-heading);
     }
 
     .mono {
@@ -180,7 +196,7 @@
     }
 
     .section-label {
-      font-family: var(--font-sans);
+      font-family: var(--font-mono);
       font-size: var(--text-caption);
       font-weight: 700;
       letter-spacing: 0.1em;
@@ -200,35 +216,24 @@
     }
 
     .section-title {
-      font-size: var(--text-display);
       text-transform: uppercase;
       letter-spacing: 0.02em;
       line-height: 1.05;
       margin-bottom: var(--space-10);
     }
 
-    /* Panels (Replacing Cards) */
+    /* Panels - Clean Brutalist Box */
     .panel {
       background: var(--surface);
       border: 1px solid var(--surface-border);
       border-radius: var(--radius-sm);
       padding: var(--space-8);
       position: relative;
+      transition: border-color var(--transition), background-color var(--transition);
     }
 
-    .panel::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 4px;
-      height: 100%;
-      background: transparent;
-      transition: background var(--transition);
-    }
-
-    .panel:hover::before {
-      background: var(--primary);
+    .panel:hover {
+      border-color: var(--primary);
     }
 
     /* Hero */
@@ -247,13 +252,12 @@
 
     @media (min-width: 768px) {
       .hero-layout {
-        grid-template-columns: 1.2fr 0.8fr;
+        grid-template-columns: 1.25fr 0.75fr;
         align-items: center;
       }
     }
 
     .hero-title {
-      font-size: var(--text-hero);
       line-height: 0.95;
       text-transform: uppercase;
       letter-spacing: 0.02em;
@@ -279,7 +283,7 @@
       font-size: var(--text-lead);
       line-height: 1.6;
       color: var(--muted);
-      max-width: 50ch;
+      max-width: 58ch;
       margin-bottom: var(--space-8);
     }
 
@@ -321,10 +325,13 @@
       color: var(--ink);
       border-radius: var(--radius-sm);
       cursor: pointer;
+      text-align: center;
     }
 
     .button:hover {
       background: var(--surface);
+      border-color: var(--primary);
+      color: var(--ink);
     }
 
     .button-primary {
@@ -344,11 +351,12 @@
     .hero-portrait {
       position: relative;
       width: 100%;
-      max-width: 400px;
+      max-width: 380px;
       aspect-ratio: 1;
       border: 1px solid var(--surface-border);
       padding: 0.5rem;
       background: var(--surface);
+      margin: 0 auto;
     }
 
     .hero-photo {
@@ -375,27 +383,63 @@
         grid-template-columns: 1fr 1fr;
       }
       .grid-about {
-        grid-template-columns: 1.2fr 0.8fr;
+        grid-template-columns: 1.15fr 0.85fr;
       }
     }
 
-    /* Projects */
-    .project-title {
-      font-size: var(--text-heading);
-      letter-spacing: -0.01em;
+    /* Project Cards */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-8);
+    }
+
+    @media (min-width: 900px) {
+      .projects-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .project-featured {
+        grid-column: 1 / -1;
+      }
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: var(--space-2);
       margin-bottom: var(--space-2);
     }
 
     .project-date {
       font-family: var(--font-mono);
       font-size: var(--text-caption);
-      color: var(--muted);
-      margin-bottom: var(--space-4);
+      color: var(--primary);
     }
 
-    .project-desc {
-      margin-bottom: var(--space-4);
+    .project-subtitle {
+      font-family: var(--font-mono);
+      font-size: var(--text-caption);
       color: var(--muted);
+      margin-bottom: var(--space-4);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .project-list {
+      margin: 0 0 var(--space-6) 0;
+      padding-left: 1.25rem;
+      color: var(--muted);
+    }
+
+    .project-list li {
+      margin-bottom: 0.65rem;
+      line-height: 1.55;
+    }
+
+    .project-list strong {
+      color: var(--ink);
     }
 
     .tech-badges {
@@ -404,34 +448,56 @@
       gap: var(--space-2);
       margin-top: auto;
       padding-top: var(--space-4);
+      border-top: 1px solid var(--surface-border);
     }
 
     .tech-badge {
       font-size: var(--text-caption);
       font-family: var(--font-mono);
-      padding: 0.15rem 0.5rem;
+      padding: 0.2rem 0.55rem;
       background: var(--primary-wash);
       border: 1px solid var(--surface-border);
-      color: var(--primary);
+      color: var(--ink);
+      border-radius: var(--radius-sm);
     }
 
-    /* Skills */
+    .project-actions {
+      margin-top: var(--space-6);
+      display: flex;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+    }
+
+    /* Skills Matrix */
     .skill-category {
       margin-bottom: var(--space-6);
+      padding-bottom: var(--space-5);
+      border-bottom: 1px solid var(--surface-border);
     }
     
     .skill-category:last-child {
       margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
     }
 
     .skill-label {
-      font-family: var(--font-sans);
+      font-family: var(--font-mono);
       font-weight: 700;
       font-size: var(--text-caption);
       letter-spacing: 0.08em;
       color: var(--primary);
       margin-bottom: var(--space-2);
       text-transform: uppercase;
+    }
+
+    .skill-content {
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .skill-content strong {
+      color: var(--ink);
     }
 
     /* Footer */
@@ -447,29 +513,6 @@
     @keyframes blink {
       0%, 49% { opacity: 1; }
       50%, 100% { opacity: 0; }
-    }
-
-    @keyframes pulse-dot {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(0.7); }
-    }
-
-    .badge-available {
-      border-color: oklch(0.62 0.16 145);
-      color: oklch(0.72 0.16 145);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .badge-available::before {
-      content: '';
-      width: 6px;
-      height: 6px;
-      background: oklch(0.72 0.16 145);
-      border-radius: 50%;
-      animation: pulse-dot 2s ease-in-out infinite;
-      flex-shrink: 0;
     }
 
     /* Background Canvas */
@@ -505,15 +548,19 @@
 
 <body>
   <canvas id="bg-canvas" aria-hidden="true"></canvas>
+
   <header class="site-header">
     <div class="container nav">
-      <a class="brand" href="#top"><span>Sys</span>.Ahmed</a>
-      <ul class="nav-links">
-        <li><a class="nav-link" href="#about">About</a></li>
-        <li><a class="nav-link" href="#projects">Projects</a></li>
-        <li><a class="nav-link" href="#credentials">Credentials</a></li>
-        <li><a class="nav-link" href="#contact">Contact</a></li>
-      </ul>
+      <a class="brand" href="#top"><span>Ahmed</span>.Arafa</a>
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a class="nav-link" href="#about">About</a></li>
+          <li><a class="nav-link" href="#skills">Skills</a></li>
+          <li><a class="nav-link" href="#projects">Projects</a></li>
+          <li><a class="nav-link" href="#credentials">Credentials</a></li>
+          <li><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </nav>
     </div>
   </header>
 
@@ -525,7 +572,7 @@
           <h1 class="hero-title">Ahmed Arafa</h1>
           <p class="hero-tagline"><span class="typing-line" id="typing-text"></span></p>
           <p class="hero-bio">
-            Backend Engineer with a B.Sc. in Computer Science and hands-on experience building and deploying web applications with C#, ASP.NET Core, TypeScript, PostgreSQL, and REST APIs — session authorization, file storage, scheduled cleanup jobs, and layered architecture.
+            Junior Backend Engineer with a Computer Science background and hands-on experience building REST APIs, relational database workflows, authentication, and background processing in C# and ASP.NET Core. Comfortable with layered architecture and SOLID principles, and looking to grow into a production backend engineering role.
           </p>
           <div class="badge-row">
             <span class="badge">Cairo, EG</span>
@@ -538,44 +585,57 @@
         </div>
         <div class="hero-portrait-wrap">
           <div class="hero-portrait">
-            <img class="hero-photo" src="https://drive.google.com/thumbnail?id=1EdYQlYGK5c7_9cl8nFvi3TRzDrGcrz6Z&sz=w1000" alt="Ahmed Arafa">
+            <img class="hero-photo" src="https://drive.google.com/thumbnail?id=1EdYQlYGK5c7_9cl8nFvi3TRzDrGcrz6Z&sz=w1000" alt="Ahmed Arafa" width="380" height="380">
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ABOUT -->
+    <!-- ABOUT & SKILLS -->
     <section class="section reveal" id="about">
       <div class="container">
-        <div class="section-label">▸ PROFILE</div>
+        <div class="section-label">TECHNICAL PROFILE</div>
         <h2 class="section-title">About Me</h2>
         <div class="grid-2 grid-about">
           <div class="panel">
-            <p>I build backend systems that solve real problems — not just code that works, but systems that scale.</p>
-            <p>I'm a Computer Science graduate focused on backend engineering. I built a full social media platform from scratch using ASP.NET Core MVC — designing the database, structuring the REST APIs, and applying SOLID principles throughout. That project didn't just teach me the stack. It taught me how to think like a backend engineer: structured, maintainable, and production-oriented.</p>
-            <p>Strong foundation in C#, Python, RESTful API design, and relational databases. I write clean, efficient code and hold myself to real-world engineering standards — not just academic ones. Currently expanding into distributed systems, Docker, and AI infrastructure.</p>
-            <p>A Junior Backend Engineer role where I can build scalable APIs and backend services on a team that takes engineering craft seriously — and where there's meaningful depth to grow into.</p>
+            <p>
+              Backend Engineer with a Computer Science background, focused on building clean, maintainable, and scalable backend systems. I specialize in designing REST APIs, working with relational databases, and applying layered architecture using C#, ASP.NET Core, and Python.
+            </p>
+            <p>
+              I enjoy solving real engineering problems — from authentication and background jobs to performance optimization and clean code practices based on SOLID principles. Through projects like Easy Copy and a full social media platform, I’ve gained hands-on experience in system design, database modeling, and deploying functional backend services.
+            </p>
+            <p>
+              I’m currently seeking a Junior Backend Engineer role where I can contribute to production systems, grow with a strong engineering team, and keep improving my craft.
+            </p>
           </div>
-          <div class="panel">
+
+          <div class="panel" id="skills">
+            <h3 style="font-size: 1.5rem; margin-bottom: 1.25rem; color: var(--ink);">Technical Skills</h3>
+            
             <div class="skill-category">
               <div class="skill-label">Languages</div>
-              <div>C#, TypeScript, Python, SQL</div>
+              <div class="skill-content"><strong>C#</strong>, <strong>Python</strong>, <strong>SQL</strong></div>
             </div>
+
             <div class="skill-category">
-              <div class="skill-label">Frameworks &amp; Runtimes</div>
-              <div>ASP.NET Core, .NET Core, Django, Django REST Framework, Vue 3, Deno</div>
+              <div class="skill-label">Tools &amp; Frameworks</div>
+              <div class="skill-content">
+                <strong>ASP.NET Core</strong>, EF Core, PostgreSQL, SQL Server, LINQ, Docker, Git, GitHub, Supabase, Supabase Storage, Postman
+              </div>
             </div>
+
             <div class="skill-category">
-              <div class="skill-label">Databases &amp; Storage</div>
-              <div>PostgreSQL, SQL Server, Supabase Storage</div>
+              <div class="skill-label">Architecture &amp; Concepts</div>
+              <div class="skill-content">
+                REST API Design, Authentication &amp; Authorization, Background Jobs, Object-Oriented Programming, SOLID Principles, Layered Architecture, Repository Pattern, Unit of Work, Database Design &amp; Management, Asynchronous Programming, Server-Side Pagination, SDLC
+              </div>
             </div>
+
             <div class="skill-category">
-              <div class="skill-label">Tools</div>
-              <div>Docker, Git, Supabase, EF Core, LINQ, Vite</div>
-            </div>
-            <div class="skill-category">
-              <div class="skill-label">Concepts</div>
-              <div>REST APIs, Authentication, Background Jobs, OOP, SOLID, Clean Architecture, Repository Pattern, Unit of Work</div>
+              <div class="skill-label">Additional Technologies</div>
+              <div class="skill-content">
+                TypeScript, Django, Vue 3, Deno, Vite
+              </div>
             </div>
           </div>
         </div>
@@ -585,44 +645,75 @@
     <!-- PROJECTS -->
     <section class="section reveal" id="projects">
       <div class="container">
-        <div class="section-label">▸ DEPLOYMENTS</div>
+        <div class="section-label">SYSTEMS &amp; DEPLOYMENTS</div>
         <h2 class="section-title">Projects</h2>
-        <div class="grid-2">
+        
+        <div class="projects-grid">
 
-          <div class="panel">
-            <h3 class="project-title">Easy Copy</h3>
-            <div class="project-date">Aug 2026</div>
-            <p class="project-desc">Temporary cross-device file and note transfer platform with password-protected sessions.</p>
-            <ul class="text-muted">
-              <li>Designed and deployed a temporary cross-device transfer platform with password-protected sessions and configurable 15, 30, or 60-minute lifetimes.</li>
-              <li>Implemented account-free session authorization using bcrypt-hashed passwords and server-side validation across Deno Edge Functions.</li>
-              <li>Built session-scoped file and note workflows using PostgreSQL and Supabase Storage, including signed file transfers, upload progress, and resource limits.</li>
-              <li>Enforced session expiry with a scheduled cleanup job running every 30 minutes to remove expired files, notes, and session records.</li>
-              <li>Tested the complete lifecycle across devices, from session creation and authorization through file transfer, expiration, and data cleanup.</li>
+          <!-- PROJECT 1: EASY COPY -->
+          <div class="panel project-featured">
+            <div class="project-header">
+              <h3 class="project-title">Easy Copy</h3>
+              <div class="project-date">Aug 2026</div>
+            </div>
+            <div class="project-subtitle">Temporary cross-device file and note transfer platform</div>
+            
+            <ul class="project-list">
+              <li>
+                <strong>System Design:</strong> Designed a temporary cross-device transfer platform with password-protected sessions, configurable 15, 30, or 60-minute lifetimes, and per-session limits of 100MB storage and 3 notes.
+              </li>
+              <li>
+                <strong>Authentication:</strong> Implemented account-free session authorization using bcrypt-hashed passwords and server-side validation across Deno Edge Functions.
+              </li>
+              <li>
+                <strong>Backend Development:</strong> Built session-scoped file and note workflows using PostgreSQL and Supabase Storage, including signed file transfers, upload progress, and resource limits.
+              </li>
+              <li>
+                <strong>Background Jobs:</strong> Implemented a cron-based cleanup job running every 30 minutes, processing up to 50 expired sessions per run to remove associated files, notes, and session records.
+              </li>
             </ul>
+
             <div class="tech-badges">
               <span class="tech-badge">Vue 3</span>
               <span class="tech-badge">TypeScript</span>
               <span class="tech-badge">Vite</span>
               <span class="tech-badge">PostgreSQL</span>
               <span class="tech-badge">Deno Edge Functions</span>
+              <span class="tech-badge">Supabase Storage</span>
             </div>
-            <div style="margin-top: 1.5rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
-              <a href="https://easy-copy.pages.dev/" class="button" target="_blank" rel="noopener noreferrer">Live App</a>
-              <a href="https://github.com/ahmed151515/easy_copy" class="button" target="_blank" rel="noopener noreferrer">View Repo</a>
+
+            <div class="project-actions">
+              <a href="https://easy-copy.pages.dev/" class="button button-primary" target="_blank" rel="noopener noreferrer">Live Platform</a>
+              <a href="https://github.com/ahmed151515/easy_copy" class="button" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
             </div>
           </div>
 
+          <!-- PROJECT 2: SOCIAL MEDIA APP -->
           <div class="panel">
-            <h3 class="project-title">Social Media App</h3>
-            <div class="project-date">Oct 2025</div>
-            <p class="project-desc">Community-based platform with posts, threaded discussions, and user interactions.</p>
-            <ul class="text-muted">
-              <li>Architected a layered social platform using ASP.NET Core 8.0 MVC with clean architecture, decoupling business logic from data access via Repository and Unit of Work patterns.</li>
-              <li>Implemented full async/await throughout the request pipeline, reducing thread blocking and improving throughput under concurrent load.</li>
-              <li>Built server-side pagination for posts and comments, limiting DB reads and keeping response times consistent at scale.</li>
-              <li>Designed and exposed RESTful APIs with structured JSON responses, enabling clean separation between backend and any future frontend client.</li>
+            <div class="project-header">
+              <h3 class="project-title">Social Media App</h3>
+              <div class="project-date">Oct 2025</div>
+            </div>
+            <div class="project-subtitle">Community platform with posts, threaded discussions, and user interactions</div>
+            
+            <ul class="project-list">
+              <li>
+                <strong>ASP.NET Core MVC:</strong> Built a layered social platform using ASP.NET Core 8.0 MVC, EF Core, and the Repository and Unit of Work patterns to separate business logic from data access.
+              </li>
+              <li>
+                <strong>Asynchronous Programming:</strong> Implemented asynchronous request handling and server-side pagination for posts and comments to avoid loading full result sets into memory.
+              </li>
+              <li>
+                <strong>MVC Architecture:</strong> Structured controllers, views, and models with structured JSON responses where needed, creating a clear boundary between backend logic and frontend clients.
+              </li>
+              <li>
+                <strong>Database Design:</strong> Built database operations with EF Core and SQL Server, including entity relationships, querying, persistence, and LINQ-based data access.
+              </li>
+              <li>
+                <strong>Authentication:</strong> Implemented user authentication and session-based access control for posts and threaded discussions.
+              </li>
             </ul>
+
             <div class="tech-badges">
               <span class="tech-badge">ASP.NET Core 8.0</span>
               <span class="tech-badge">C#</span>
@@ -630,27 +721,42 @@
               <span class="tech-badge">EF Core</span>
               <span class="tech-badge">LINQ</span>
             </div>
-            <div style="margin-top: 1.5rem;">
-              <a href="https://github.com/ahmed151515/Social_Media_App" class="button" target="_blank">View Repo</a>
+
+            <div class="project-actions">
+              <a href="https://github.com/ahmed151515/Social_Media_App" class="button button-primary" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
             </div>
           </div>
 
+          <!-- PROJECT 3: ILOVETEXT -->
           <div class="panel">
-            <h3 class="project-title">IloveText</h3>
-            <div class="project-date">Dec 2024</div>
-            <p class="project-desc">AI-powered text processing web application with NLP capabilities.</p>
-            <ul class="text-muted">
-              <li>Designed the full application architecture from scratch, establishing a clean separation between input handling, API integration, and output rendering.</li>
-              <li>Integrated the Hugging Face Inference API to apply NLP models (summarization, classification) on user-submitted text, delivering results through a structured Python backend.</li>
-              <li>Built an end-to-end flow (input → processing → output) with a lightweight frontend, keeping the interface intuitive and the backend independently testable.</li>
+            <div class="project-header">
+              <h3 class="project-title">iLoveText</h3>
+              <div class="project-date">Dec 2024</div>
+            </div>
+            <div class="project-subtitle">AI-powered text processing web application with NLP capabilities</div>
+            
+            <ul class="project-list">
+              <li>
+                <strong>Application Architecture:</strong> Designed the full application architecture from scratch, separating input handling, API integration, and output rendering into distinct layers.
+              </li>
+              <li>
+                <strong>API Integration:</strong> Integrated the Hugging Face Inference API to apply NLP models for summarization and translation on user-submitted text, with automatic language detection and content moderation.
+              </li>
+              <li>
+                <strong>Backend Development:</strong> Built a Flask backend handling text chunking for long inputs, a translation pipeline, and structured error handling for API and content issues.
+              </li>
             </ul>
+
             <div class="tech-badges">
               <span class="tech-badge">Python</span>
+              <span class="tech-badge">Flask</span>
               <span class="tech-badge">Hugging Face API</span>
+              <span class="tech-badge">REST API</span>
               <span class="tech-badge">HTML/CSS</span>
             </div>
-            <div style="margin-top: 1.5rem;">
-              <a href="https://github.com/ahmed151515/IloveText" class="button" target="_blank">View Repo</a>
+
+            <div class="project-actions">
+              <a href="https://github.com/ahmed151515/IloveText" class="button button-primary" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
             </div>
           </div>
 
@@ -661,41 +767,47 @@
     <!-- CREDENTIALS -->
     <section class="section reveal" id="credentials">
       <div class="container">
-        <div class="section-label">▸ CREDENTIALS</div>
+        <div class="section-label">EDUCATION &amp; CERTIFICATIONS</div>
         <h2 class="section-title">Credentials</h2>
         <div class="grid-2">
+          
           <div class="panel">
             <div class="skill-category">
               <div class="skill-label">Degree</div>
-              <div>B.Sc. Computer Science</div>
+              <div style="font-size: 1.25rem; font-weight: 700; color: var(--ink);">Bachelor's in Computer Science</div>
             </div>
             <div class="skill-category">
-              <div class="skill-label">University</div>
+              <div class="skill-label">Institution</div>
               <div class="text-muted">CHI</div>
             </div>
             <div class="skill-category">
               <div class="skill-label">Duration</div>
-              <div class="text-muted">2022 — 2026</div>
+              <div class="text-muted">2022 to 2026</div>
             </div>
             <div class="skill-category">
-              <div class="skill-label">CGPA</div>
-              <div class="text-muted">3.23 / 4.0</div>
+              <div class="skill-label">Academic Performance</div>
+              <div class="text-muted"><strong style="color: var(--ink);">CGPA: 3.23</strong> / 4.0</div>
             </div>
           </div>
           
           <div class="panel">
             <div class="skill-category">
               <div class="skill-label">Certification</div>
-              <div>ALX Software Engineering Program</div>
+              <div style="font-size: 1.25rem; font-weight: 700; color: var(--ink);">ALX Software Engineering Program</div>
             </div>
             <div class="skill-category">
-              <div class="skill-label">Provider</div>
+              <div class="skill-label">Provider &amp; Year</div>
               <div class="text-muted">ALX Africa (2024)</div>
             </div>
+            <div class="skill-category">
+              <div class="skill-label">Focus Areas</div>
+              <div class="text-muted">Foundations of system engineering, low-level algorithms, data structures, and team collaboration.</div>
+            </div>
             <div style="margin-top: 1.5rem;">
-              <a href="https://savanna.alxafrica.com/certificates/2syEfHe9Xm" class="button" target="_blank">Verify Cert</a>
+              <a href="https://savanna.alxafrica.com/certificates/2syEfHe9Xm" class="button button-primary" target="_blank" rel="noopener noreferrer">Verify Certificate</a>
             </div>
           </div>
+
         </div>
       </div>
     </section>
@@ -703,15 +815,18 @@
     <!-- CONTACT -->
     <section class="section reveal" id="contact">
       <div class="container">
-        <div class="section-label">▸ CONTACT</div>
+        <div class="section-label">CONTACT &amp; DIRECT CHANNELS</div>
         <h2 class="section-title">Let's Talk</h2>
         <div class="panel">
-          <p style="font-size: 1.1rem; max-width: 60ch; margin-bottom: 2rem;">If you need a backend engineer who thinks about architecture, performance, and maintainability — I'm available. Let's build something solid.</p>
+          <p style="font-size: 1.25rem; max-width: 62ch; margin-bottom: 2rem; color: var(--ink);">
+            If you need a junior backend engineer who thinks about architecture, performance, relational data integrity, and maintainability: I am ready to contribute.
+          </p>
           <div class="cta-row">
             <a class="button button-primary" href="mailto:ahmed.arafa.engineer15@gmail.com">Email Me</a>
             <a class="button" href="tel:+201153350972">+20 115 335 0972</a>
-            <a class="button" href="https://github.com/ahmed151515" target="_blank">GitHub</a>
-            <a class="button" href="https://www.linkedin.com/in/ahmedarafa1515/" target="_blank">LinkedIn</a>
+            <a class="button" href="https://github.com/ahmed151515" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a class="button" href="https://www.linkedin.com/in/ahmedarafa1515/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a class="button" href="https://drive.google.com/file/d/1q27BVYObnpJeg8gj238diaIrrPWbIl3h/view?usp=sharing" target="_blank" rel="noopener noreferrer">CV</a>
           </div>
         </div>
       </div>
@@ -720,7 +835,7 @@
 
   <footer class="footer">
     <div class="container">
-      <code>$ connection closed — backend systems, clean edges, practical scale.</code>
+      <code>$ connection closed: backend systems, clean architecture, practical scale.</code>
     </div>
   </footer>
 
@@ -733,19 +848,24 @@
       const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
       // Initialize Lenis Smooth Scroll
-      const lenis = new Lenis({
-        duration: 1.2,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        direction: 'vertical',
-        gestureDirection: 'vertical',
-        smooth: true,
-      });
+      let lenis;
+      try {
+        lenis = new Lenis({
+          duration: 1.2,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          direction: 'vertical',
+          gestureDirection: 'vertical',
+          smooth: true,
+        });
 
-      function raf(time) {
-        lenis.raf(time);
+        function raf(time) {
+          lenis.raf(time);
+          requestAnimationFrame(raf);
+        }
         requestAnimationFrame(raf);
+      } catch (e) {
+        console.warn("Lenis initialization skipped:", e);
       }
-      requestAnimationFrame(raf);
 
       const isMobile = window.innerWidth < 768;
 
@@ -758,7 +878,7 @@
         } catch(e) {}
 
         if (useWebGL && typeof THREE !== 'undefined') {
-          // --- WebGL Overdrive Background ---
+          // WebGL Particle Network Background
           const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
           renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
           let width = window.innerWidth;
@@ -787,7 +907,7 @@
           particlesGeometry.setAttribute('position', new THREE.BufferAttribute(particlePositions, 3));
           
           const pMaterial = new THREE.PointsMaterial({
-            color: 0xff003c, // Warning Red
+            color: 0xff003c, // Cyber Warning Red
             size: 4,
             transparent: true,
             opacity: 0.8,
@@ -894,213 +1014,152 @@
           }
           animate();
         } else {
-          // --- Fallback 2D Canvas ---
+          // Fallback 2D Canvas
           const ctx = canvas.getContext("2d");
           let width, height;
-        const squareSize = 60;
-        let horizontalBeams = [];
-        let verticalBeams = [];
-        // Card hover burst: {x, y, radius, alpha}
-        let bursts = [];
-        let hoveredCardRect = null;
+          const squareSize = 60;
+          let horizontalBeams = [];
+          let verticalBeams = [];
 
-        function createBeam(isHorizontal) {
-          return {
-            rowCol: Math.floor(Math.random() * (isHorizontal ? Math.ceil(height / squareSize) + 2 : Math.ceil(width / squareSize) + 2)),
-            pos: Math.random() * (isHorizontal ? width : height),
-            length: Math.random() * 120 + 80,
-            speed: (Math.random() * 1.2 + 0.4) * (Math.random() > 0.5 ? 1 : -1)
-          };
-        }
-
-        function initCanvas() {
-          width = canvas.width = window.innerWidth;
-          height = canvas.height = window.innerHeight;
-          horizontalBeams = [];
-          verticalBeams = [];
-          const numBeams = Math.floor((width * height) / 28000);
-          for (let i = 0; i < numBeams; i++) {
-            horizontalBeams.push(createBeam(true));
-            verticalBeams.push(createBeam(false));
+          function createBeam(isHorizontal) {
+            return {
+              rowCol: Math.floor(Math.random() * (isHorizontal ? Math.ceil(height / squareSize) + 2 : Math.ceil(width / squareSize) + 2)),
+              pos: Math.random() * (isHorizontal ? width : height),
+              length: Math.random() * 120 + 80,
+              speed: (Math.random() * 1.2 + 0.4) * (Math.random() > 0.5 ? 1 : -1)
+            };
           }
-        }
 
-        window.addEventListener("resize", initCanvas);
-
-        // Scroll-linked canvas opacity fade — full in hero, dim in content
-        window.addEventListener("scroll", () => {
-          const heroHeight = window.innerHeight;
-          const scrollY = window.scrollY;
-          const fadeStart = heroHeight * 0.4;
-          const fadeEnd = heroHeight * 0.9;
-          let opacity;
-          if (scrollY < fadeStart) opacity = 1;
-          else if (scrollY > fadeEnd) opacity = 0.18;
-          else opacity = 1 - ((scrollY - fadeStart) / (fadeEnd - fadeStart)) * 0.82;
-          canvas.style.opacity = opacity;
-        }, { passive: true });
-
-        // Card hover — illuminate nearby grid squares as brand signature
-        document.querySelectorAll(".panel").forEach(panel => {
-          panel.addEventListener("mouseenter", () => {
-            const rect = panel.getBoundingClientRect();
-            hoveredCardRect = rect;
-            // Spawn a burst at card center
-            bursts.push({ x: rect.left + rect.width / 2, y: rect.top + rect.height / 2, radius: 0, alpha: 0.5 });
-          });
-          panel.addEventListener("mouseleave", () => {
-            hoveredCardRect = null;
-          });
-        });
-
-        function drawBg() {
-          ctx.clearRect(0, 0, width, height);
-
-          // 1. Static faint grid
-          ctx.beginPath();
-          ctx.strokeStyle = "rgba(255, 0, 60, 0.05)";
-          ctx.lineWidth = 1;
-          for (let x = 0; x <= width; x += squareSize) {
-            ctx.moveTo(x, 0); ctx.lineTo(x, height);
-          }
-          for (let y = 0; y <= height; y += squareSize) {
-            ctx.moveTo(0, y); ctx.lineTo(width, y);
-          }
-          ctx.stroke();
-
-          // 2. Highlighted grid squares near hovered card (brand signature)
-          if (hoveredCardRect) {
-            const r = hoveredCardRect;
-            const padding = squareSize * 1.5;
-            const x0 = Math.floor((r.left - padding) / squareSize) * squareSize;
-            const y0 = Math.floor((r.top - padding) / squareSize) * squareSize;
-            const x1 = Math.ceil((r.right + padding) / squareSize) * squareSize;
-            const y1 = Math.ceil((r.bottom + padding) / squareSize) * squareSize;
-            const cx = r.left + r.width / 2;
-            const cy = r.top + r.height / 2;
-            const maxDist = Math.sqrt(Math.pow(r.width / 2 + padding, 2) + Math.pow(r.height / 2 + padding, 2));
-
-            for (let sx = x0; sx <= x1; sx += squareSize) {
-              for (let sy = y0; sy <= y1; sy += squareSize) {
-                const dist = Math.sqrt(Math.pow(sx + squareSize / 2 - cx, 2) + Math.pow(sy + squareSize / 2 - cy, 2));
-                const glowAlpha = Math.max(0, (1 - dist / maxDist) * 0.18);
-                if (glowAlpha > 0.005) {
-                  ctx.strokeStyle = `rgba(255, 0, 60, ${glowAlpha})`;
-                  ctx.lineWidth = 1;
-                  ctx.strokeRect(sx, sy, squareSize, squareSize);
-                }
-              }
+          function initCanvas() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            horizontalBeams = [];
+            verticalBeams = [];
+            const numBeams = Math.floor((width * height) / 28000);
+            for (let i = 0; i < numBeams; i++) {
+              horizontalBeams.push(createBeam(true));
+              verticalBeams.push(createBeam(false));
             }
           }
 
-          // 3. Burst rings on panel hover
-          bursts = bursts.filter(b => b.alpha > 0.01);
-          bursts.forEach(burst => {
-            burst.radius += 4;
-            burst.alpha *= 0.92;
+          window.addEventListener("resize", initCanvas);
+
+          function drawBg() {
+            ctx.clearRect(0, 0, width, height);
+
             ctx.beginPath();
-            ctx.arc(burst.x, burst.y, burst.radius, 0, Math.PI * 2);
-            ctx.strokeStyle = `rgba(255, 0, 60, ${burst.alpha})`;
+            ctx.strokeStyle = "rgba(255, 0, 60, 0.05)";
             ctx.lineWidth = 1;
+            for (let x = 0; x <= width; x += squareSize) {
+              ctx.moveTo(x, 0); ctx.lineTo(x, height);
+            }
+            for (let y = 0; y <= height; y += squareSize) {
+              ctx.moveTo(0, y); ctx.lineTo(width, y);
+            }
             ctx.stroke();
-          });
 
-          // 4. Traveling beam lights
-          ctx.lineWidth = 1.5;
-          horizontalBeams.forEach(beam => {
-            beam.pos += beam.speed;
-            if (beam.speed > 0 && beam.pos > width) beam.pos = -beam.length;
-            if (beam.speed < 0 && beam.pos < -beam.length) beam.pos = width;
-            const y = beam.rowCol * squareSize;
-            const tailX = beam.speed > 0 ? beam.pos : beam.pos + beam.length;
-            const headX = beam.speed > 0 ? beam.pos + beam.length : beam.pos;
-            if (Math.abs(tailX - headX) < 1) return;
-            const grad = ctx.createLinearGradient(tailX, y, headX, y);
-            grad.addColorStop(0, "rgba(255, 0, 60, 0)");
-            grad.addColorStop(1, "rgba(255, 0, 60, 0.75)");
-            ctx.beginPath();
-            ctx.strokeStyle = grad;
-            ctx.moveTo(tailX, y);
-            ctx.lineTo(headX, y);
-            ctx.stroke();
-          });
+            ctx.lineWidth = 1.5;
+            horizontalBeams.forEach(beam => {
+              beam.pos += beam.speed;
+              if (beam.speed > 0 && beam.pos > width) beam.pos = -beam.length;
+              if (beam.speed < 0 && beam.pos < -beam.length) beam.pos = width;
+              const y = beam.rowCol * squareSize;
+              const tailX = beam.speed > 0 ? beam.pos : beam.pos + beam.length;
+              const headX = beam.speed > 0 ? beam.pos + beam.length : beam.pos;
+              if (Math.abs(tailX - headX) < 1) return;
+              const grad = ctx.createLinearGradient(tailX, y, headX, y);
+              grad.addColorStop(0, "rgba(255, 0, 60, 0)");
+              grad.addColorStop(1, "rgba(255, 0, 60, 0.75)");
+              ctx.beginPath();
+              ctx.strokeStyle = grad;
+              ctx.moveTo(tailX, y);
+              ctx.lineTo(headX, y);
+              ctx.stroke();
+            });
 
-          verticalBeams.forEach(beam => {
-            beam.pos += beam.speed;
-            if (beam.speed > 0 && beam.pos > height) beam.pos = -beam.length;
-            if (beam.speed < 0 && beam.pos < -beam.length) beam.pos = height;
-            const x = beam.rowCol * squareSize;
-            const tailY = beam.speed > 0 ? beam.pos : beam.pos + beam.length;
-            const headY = beam.speed > 0 ? beam.pos + beam.length : beam.pos;
-            if (Math.abs(tailY - headY) < 1) return;
-            const grad = ctx.createLinearGradient(x, tailY, x, headY);
-            grad.addColorStop(0, "rgba(255, 0, 60, 0)");
-            grad.addColorStop(1, "rgba(255, 0, 60, 0.75)");
-            ctx.beginPath();
-            ctx.strokeStyle = grad;
-            ctx.moveTo(x, tailY);
-            ctx.lineTo(x, headY);
-            ctx.stroke();
-          });
+            verticalBeams.forEach(beam => {
+              beam.pos += beam.speed;
+              if (beam.speed > 0 && beam.pos > height) beam.pos = -beam.length;
+              if (beam.speed < 0 && beam.pos < -beam.length) beam.pos = height;
+              const x = beam.rowCol * squareSize;
+              const tailY = beam.speed > 0 ? beam.pos : beam.pos + beam.length;
+              const headY = beam.speed > 0 ? beam.pos + beam.length : beam.pos;
+              if (Math.abs(tailY - headY) < 1) return;
+              const grad = ctx.createLinearGradient(x, tailY, x, headY);
+              grad.addColorStop(0, "rgba(255, 0, 60, 0)");
+              grad.addColorStop(1, "rgba(255, 0, 60, 0.75)");
+              ctx.beginPath();
+              ctx.strokeStyle = grad;
+              ctx.moveTo(x, tailY);
+              ctx.lineTo(headX, y);
+              ctx.stroke();
+            });
 
-          requestAnimationFrame(drawBg);
-        }
+            requestAnimationFrame(drawBg);
+          }
 
-        initCanvas();
-        drawBg();
+          initCanvas();
+          drawBg();
         }
 
         // GSAP Animations
-        gsap.registerPlugin(ScrollTrigger);
+        if (typeof gsap !== 'undefined') {
+          if (typeof ScrollTrigger !== 'undefined') {
+            gsap.registerPlugin(ScrollTrigger);
 
-        // Keep Lenis and ScrollTrigger in sync
-        lenis.on('scroll', ScrollTrigger.update);
-        gsap.ticker.add((time) => {
-          lenis.raf(time * 1000);
-        });
-        gsap.ticker.lagSmoothing(0);
-
-        // Hero Sequence
-        const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
-        
-        // Ensure hero portrait is hidden before animation
-        gsap.set(".hero-portrait", { clipPath: "inset(100% 0 0 0)" });
-        gsap.set(".hero-photo", { scale: 1.2 });
-        
-        tl.from(".site-header", { y: -20, opacity: 0, duration: 1 })
-          .from(".hero-title", { y: 40, opacity: 0, duration: 1, clipPath: "inset(0 0 100% 0)" }, "-=0.6")
-          .from(".hero-tagline", { opacity: 0, duration: 0.8 }, "-=0.8")
-          .from(".hero-bio", { y: 20, opacity: 0, duration: 0.8 }, "-=0.6")
-          .from(".badge-row .badge", { y: 15, opacity: 0, duration: 0.6, stagger: 0.1 }, "-=0.6")
-          .from(".cta-row .button", { y: 15, opacity: 0, duration: 0.6, stagger: 0.1 }, "-=0.4")
-          .to(".hero-portrait", { 
-            clipPath: "inset(0% 0 0 0)", 
-            duration: 1.2, 
-            ease: "expo.out" 
-          }, "-=1.2")
-          .to(".hero-photo", { scale: 1, duration: 1.2, ease: "expo.out" }, "-=1.2");
-
-        // ScrollTrigger for Sections
-        gsap.utils.toArray(".section").forEach((section) => {
-          const title = section.querySelector(".section-title");
-          const label = section.querySelector(".section-label");
-          const panels = section.querySelectorAll(".panel");
-          
-          const secTl = gsap.timeline({
-            scrollTrigger: {
-              trigger: section,
-              start: "top 80%",
-              toggleActions: "play none none reverse"
+            if (lenis) {
+              lenis.on('scroll', ScrollTrigger.update);
+              gsap.ticker.add((time) => {
+                lenis.raf(time * 1000);
+              });
+              gsap.ticker.lagSmoothing(0);
             }
-          });
 
-          secTl.from(label, { opacity: 0, x: -20, duration: 0.6 })
-               .from(title, { opacity: 0, y: 30, duration: 0.8, clipPath: "inset(0 0 100% 0)" }, "-=0.4");
-               
-          if(panels.length > 0) {
-            secTl.from(panels, { opacity: 0, y: 40, duration: 0.8, stagger: 0.15 }, "-=0.6");
+            // ScrollTrigger for Sections
+            gsap.utils.toArray(".section").forEach((section) => {
+              const title = section.querySelector(".section-title");
+              const label = section.querySelector(".section-label");
+              const panels = section.querySelectorAll(".panel");
+              
+              const secTl = gsap.timeline({
+                scrollTrigger: {
+                  trigger: section,
+                  start: "top 80%",
+                  toggleActions: "play none none reverse"
+                }
+              });
+
+              if (label) {
+                secTl.from(label, { opacity: 0, x: -20, duration: 0.6 });
+              }
+              if (title) {
+                secTl.from(title, { opacity: 0, y: 30, duration: 0.8, clipPath: "inset(0 0 100% 0)" }, "-=0.4");
+              }
+              if (panels && panels.length > 0) {
+                secTl.from(panels, { opacity: 0, y: 40, duration: 0.8, stagger: 0.15 }, "-=0.6");
+              }
+            });
           }
-        });
+
+          // Hero Sequence
+          const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
+          
+          gsap.set(".hero-portrait", { clipPath: "inset(100% 0 0 0)" });
+          gsap.set(".hero-photo", { scale: 1.2 });
+          
+          tl.from(".site-header", { y: -20, opacity: 0, duration: 1 })
+            .from(".hero-title", { y: 40, opacity: 0, duration: 1, clipPath: "inset(0 0 100% 0)" }, "-=0.6")
+            .from(".hero-tagline", { opacity: 0, duration: 0.8 }, "-=0.8")
+            .from(".hero-bio", { y: 20, opacity: 0, duration: 0.8 }, "-=0.6")
+            .from(".badge-row .badge", { y: 15, opacity: 0, duration: 0.6, stagger: 0.1 }, "-=0.6")
+            .from(".cta-row .button", { y: 15, opacity: 0, duration: 0.6, stagger: 0.1 }, "-=0.4")
+            .to(".hero-portrait", { 
+              clipPath: "inset(0% 0 0 0)", 
+              duration: 1.2, 
+              ease: "expo.out" 
+            }, "-=1.2")
+            .to(".hero-photo", { scale: 1, duration: 1.2, ease: "expo.out" }, "-=1.2");
+        }
       }
 
       // Active nav link highlighting
@@ -1111,7 +1170,7 @@
         let current = "";
         sections.forEach(section => {
           const sectionTop = section.offsetTop;
-          if (scrollY >= sectionTop - 150) {
+          if (window.scrollY >= sectionTop - 150) {
             current = section.getAttribute("id");
           }
         });
@@ -1128,15 +1187,17 @@
       const typingTarget = document.getElementById("typing-text");
       const typingPhrases = [
         "Initializing backend systems...",
-        "Architecting clean APIs...",
-        "Scheduling background cleanup jobs...",
-        "Hashing session passwords..."
+        "Architecting ASP.NET Core & C# APIs...",
+        "Executing background processing jobs...",
+        "Designing relational database workflows...",
+        "Implementing session authorization..."
       ];
       let phraseIndex = 0;
       let charIndex = 0;
       let deleting = false;
 
       const typeLoop = () => {
+        if (!typingTarget) return;
         const currentPhrase = typingPhrases[phraseIndex];
 
         if (!deleting) {
@@ -1160,7 +1221,7 @@
 
       if (!prefersReducedMotion) {
         typeLoop();
-      } else {
+      } else if (typingTarget) {
         typingTarget.textContent = "Backend Systems Engineer.";
       }
     })();
